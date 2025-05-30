@@ -53,7 +53,7 @@ public:
         kp(kp_,kp_,kp_),ki(ki_,ki_,ki_),kd(kd_,kd_,kd_),integral(0,0,0),prev_error(0,0,0){}
     Vec3 compute(const Vec3& error,double dt=0.1){
         integral = integral + error*dt;
-        const double maxI = 1.0;
+        const double maxI = 5.0;
         if(integral.norm()>maxI) integral = integral*(maxI/integral.norm());
         Vec3 derivative = (error - prev_error)*(1.0/dt);
         prev_error = error;
@@ -63,7 +63,7 @@ public:
 
 int main(){
     Spacecraft sc;
-    PIDController pid(0.1,0.01,0.05);
+    PIDController pid(1.2, 0.08, 0.2);
     const Vec3 target_q(0,0,0);
 
     for(int step=0; step<100; ++step){
