@@ -19,7 +19,7 @@ struct Mat3 {
     Mat3(double diag) { for (int i=0;i<3;++i) for (int j=0;j<3;++j) m[i][j]=(i==j?diag:0.0); }
 };
 
-// Matrix‑vector product (unused after fix but kept for completeness)
+// Matrix‑vector product 
 Vec3 operator*(const Mat3& m,const Vec3& v){
     return Vec3(
         m.m[0][0]*v.x + m.m[0][1]*v.y + m.m[0][2]*v.z,
